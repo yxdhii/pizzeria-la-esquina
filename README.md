@@ -245,6 +245,8 @@ Los usuarios iniciales son creados automáticamente mediante la clase **DataInit
 
 ---
 
+<div align="center">
+
 ## 👩🏻‍💻 Desarrollado por
 
 ### **Yadhira Patricia Saavedra Guadalupe**
