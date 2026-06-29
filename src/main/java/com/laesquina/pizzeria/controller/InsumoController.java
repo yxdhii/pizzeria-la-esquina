@@ -11,7 +11,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-/** RF-0010: "Registrar proveedores y entradas de insumos". */
+/** 
+ * Controlador encargado de gestionar las operaciones relacionadas
+ * con el registro y administración de los insumos del sistema.
+ */
 @Controller
 @RequestMapping("/admin/insumos")
 public class InsumoController {
@@ -40,9 +43,9 @@ public class InsumoController {
         return "admin/insumos/formulario";
     }
 
-    // stockInicial/stockMinimo viajan como parametros sueltos (no son parte
-    // de la entidad Insumo) porque al crear un insumo nuevo tambien se debe
-    // crear su Inventario asociado; ver InsumoServiceImpl.guardar(...).
+    // El stock inicial y el stock mínimo no pertenecen a la entidad Insumo,
+    // por lo que se reciben de forma independiente para registrar el
+    // inventario correspondiente.
     @PostMapping("/guardar")
     public String guardar(@Valid @ModelAttribute("insumo") Insumo insumo,
             BindingResult resultado,

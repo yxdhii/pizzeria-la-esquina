@@ -3,9 +3,10 @@ package com.laesquina.pizzeria.dto;
 import java.time.LocalDateTime;
 
 /**
- * RF-005: "Generar reportes de ventas e inventario". Este DTO es una fila
- * resumida del reporte de ventas (no se expone la entidad Factura completa
- * a la vista para mantener el reporte simple y enfocado).
+ * Objeto de transferencia de datos (DTO) utilizado para representar
+ * la información resumida de las ventas generadas por el sistema,
+ * incluyendo la factura, la fecha, el cliente, el método de pago
+ * y el importe total.
  */
 public class ReporteVentasDTO {
 

@@ -1,6 +1,9 @@
 package com.laesquina.pizzeria.model.enums;
 
-/** Tabla 3 - Clases de Entidad: Cliente.tipoCliente (salon/llevar). */
+/**
+ * Enumeración que representa las modalidades
+ * de atención asociadas a los clientes.
+ */
 public enum TipoCliente {
     SALON,
     LLEVAR

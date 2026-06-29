@@ -4,7 +4,7 @@ import com.laesquina.pizzeria.model.enums.MetodoPago;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-/** Tabla 3 - Clase de Entidad: Factura / Comprobante (relacion 1 a 1 con Pedido). */
+/** Clase de Entidad: Factura / Comprobante */
 @Entity
 @Table(name = "factura")
 public class Factura {

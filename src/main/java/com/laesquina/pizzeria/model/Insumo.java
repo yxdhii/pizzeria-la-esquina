@@ -5,11 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 /**
- * Tabla 3 - Clase de Entidad: Insumo.
- * "cantidadDisponible" del documento se modela en la entidad Inventario
- * (relacion 1 a 1), tal como aparece tambien en el listado de entidades
- * del negocio ("Inventario: control de stock de insumos"), evitando así
- * duplicar el dato de stock en dos tablas distintas.
+ * Entidad que representa los insumos utilizados por la pizzería
+ * para la preparación de los productos.
  */
 @Entity
 @Table(name = "insumo")

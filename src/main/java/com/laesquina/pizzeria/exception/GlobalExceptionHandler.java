@@ -5,9 +5,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 /**
- * Centraliza el manejo de errores para todos los controladores (en vez de
- * repetir try/catch en cada metodo). Redirige a una vista de error generica
- * con un mensaje entendible para el usuario final (mozo/cajero/admin).
+ * Manejador global de excepciones de la aplicación.
+ *
+ * Centraliza el tratamiento de los errores generados por los controladores,
+ * mostrando mensajes informativos al usuario mediante una vista de error.
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -24,15 +25,16 @@ public class GlobalExceptionHandler {
         return "error";
     }
 
-    // Cubre reglas de negocio como "no se puede cancelar un pedido entregado"
-    // o "el pedido ya tiene un comprobante generado" (PedidoServiceImpl, FacturaServiceImpl).
+    // Gestiona las excepciones relacionadas con reglas de negocio
+    // que impiden la ejecución de una operación.
     @ExceptionHandler(IllegalStateException.class)
     public String manejarEstadoInvalido(IllegalStateException ex, Model model) {
         model.addAttribute("mensaje", ex.getMessage());
         return "error";
     }
 
-    // Cubre validaciones manuales como "debe seleccionar una mesa" (PedidoServiceImpl).
+    // Gestiona las excepciones ocasionadas por datos de entrada
+    // inválidos o incompletos durante el procesamiento de solicitudes.
     @ExceptionHandler(IllegalArgumentException.class)
     public String manejarArgumentoInvalido(IllegalArgumentException ex, Model model) {
         model.addAttribute("mensaje", ex.getMessage());

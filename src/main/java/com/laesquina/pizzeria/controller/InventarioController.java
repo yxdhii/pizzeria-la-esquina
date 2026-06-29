@@ -7,10 +7,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * RF-009: alertas de stock minimo. Se expone bajo /admin/** (gestion
- * general) y se reutiliza tambien desde LogisticaController para el rol
- * Encargado de Logistica, que es quien opera el inventario dia a dia segun
- * el documento (seccion 2.1.2: "Personal de logistica... controla insumos").
+ * Controlador responsable de la administración del inventario del sistema.
+ *
+ * Permite consultar el estado del inventario, registrar movimientos
+ * de entrada y salida de insumos, y actualizar los niveles mínimos
+ * de stock para mantener un adecuado control de existencias.
  */
 @Controller
 @RequestMapping("/admin/inventario")

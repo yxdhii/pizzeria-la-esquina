@@ -4,7 +4,11 @@ import com.laesquina.pizzeria.model.enums.RolEmpleado;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
-/** Tabla 3 - Clase de Entidad: Empleado (idEmpleado, nombre, apellido, rol, turno, usuario, contrasena). */
+/**
+ * Entidad que representa a los empleados registrados en el sistema,
+ * incluyendo la información necesaria para su identificación,
+ * autenticación y asignación de funciones.
+ */
 @Entity
 @Table(name = "empleado")
 public class Empleado {
@@ -31,9 +35,7 @@ public class Empleado {
     @Column(nullable = false, unique = true, length = 40)
     private String usuario;
 
-    // NOTA: en este alcance academico se guarda en texto plano para simplificar
-    // las pruebas. Antes de un despliegue real se debe cifrar con BCrypt
-    // (ver seccion "Seguridad" del README) al incorporar Spring Security.
+    
     @NotBlank(message = "La contraseña es obligatoria")
     @Column(nullable = false, length = 100)
     private String contrasena;

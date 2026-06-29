@@ -1,6 +1,9 @@
 package com.laesquina.pizzeria.model.enums;
 
-/** Tabla 3 (Producto.tipoProducto): Pizza, Bebida o Complemento. */
+/**
+ * Enumeración que clasifica los productos
+ * ofrecidos por la pizzería.
+ */
 public enum TipoProducto {
     PIZZA,
     BEBIDA,

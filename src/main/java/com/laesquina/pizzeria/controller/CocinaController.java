@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-/** Caso de uso "Preparar Pedido" (3.2.b), a cargo del Cocinero. */
+/** Controlador responsable de gestionar la preparación y actualización del estado de los pedidos. */
 @Controller
 @RequestMapping("/cocina")
 public class CocinaController {

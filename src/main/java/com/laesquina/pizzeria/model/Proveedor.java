@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Tabla 3 - Clase de Entidad: Proveedor. */
+
 @Entity
 @Table(name = "proveedor")
 public class Proveedor {
@@ -24,8 +24,7 @@ public class Proveedor {
     @Column(length = 200)
     private String productosSuministrados;
 
-    // Lado inverso de Insumo.proveedor (ManyToOne). mappedBy evita crear
-    // una segunda tabla de union; la FK vive en la tabla "insumo".
+    
     @OneToMany(mappedBy = "proveedor", cascade = CascadeType.PERSIST)
     private List<Insumo> insumos = new ArrayList<>();
 

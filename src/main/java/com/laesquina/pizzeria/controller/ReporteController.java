@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.time.LocalDate;
 import java.util.List;
 
-/** RF-005: "Generar reportes automaticos de ventas e inventarios". */
+/**
+ * Controlador responsable de la generación y consulta de los
+ * reportes de ventas e inventario, proporcionando información
+ * para el seguimiento de las operaciones de la pizzería.
+ */
 @Controller
 @RequestMapping("/admin/reportes")
 public class ReporteController {
@@ -31,8 +35,8 @@ public class ReporteController {
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate hasta,
             Model model) {
 
-        // Por defecto se muestra el mes en curso, para que el reporte no
-        // aparezca vacio la primera vez que se abre la pantalla.
+        // Se establece el mes actual como rango predeterminado cuando
+        // no se proporcionan fechas de consulta.
         LocalDate hoy = LocalDate.now();
         LocalDate desdeFinal = (desde != null) ? desde : hoy.withDayOfMonth(1);
         LocalDate hastaFinal = (hasta != null) ? hasta : hoy;

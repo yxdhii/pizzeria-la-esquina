@@ -18,8 +18,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 /**
- * Casos de uso "Registrar Pedido" y "Entregar Pedido" (3.2.a y 3.2.d), a
- * cargo del Mozo segun el diagrama de casos de uso (Ilustracion 7).
+ * Controlador encargado de gestionar las operaciones del módulo de mozo.
+ *
+ * Permite registrar, consultar, entregar y cancelar pedidos, así como
+ * visualizar la información necesaria para la atención de los clientes.
  */
 @Controller
 @RequestMapping("/mozo")
@@ -42,8 +44,9 @@ public class MozoController {
     }
 
     /**
-     * Recupera al Empleado real a partir del usuario logueado en Spring Security.
-     */
+    * Obtiene la información del empleado autenticado para asociar las
+    * operaciones realizadas con el usuario que inició sesión.
+    */
     private Empleado empleadoActual(Authentication authentication) {
         return empleadoRepository.findByUsuario(authentication.getName())
                 .orElseThrow(() -> new IllegalStateException("Empleado no encontrado para el usuario logueado"));

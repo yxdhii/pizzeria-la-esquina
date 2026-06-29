@@ -13,10 +13,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Conecta Spring Security con la tabla "empleado". Cada Empleado.rol
- * (RolEmpleado) se traduce a una autoridad "ROLE_<rol>" (ej: ROLE_CAJERO),
- * que es lo que SecurityConfig usa en hasRole(...) para proteger las rutas
- * /admin/**, /cajero/**, /mozo/**, /cocina/**, /logistica/**.
+ * Implementación de la interfaz UserDetailsService utilizada por
+ * Spring Security para autenticar usuarios.
+ * 
+ * Recupera la información del empleado desde la base de datos y
+ * asigna las autoridades correspondientes según el rol registrado.
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

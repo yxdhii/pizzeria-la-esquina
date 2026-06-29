@@ -8,7 +8,7 @@ public interface InventarioService {
     List<Inventario> listarStockBajoMinimo();
     Inventario buscarPorId(Long id);
 
-    /** RF-0010: registrar entrada de insumos (compra a proveedor). */
+    /** registrar entrada de insumos (compra a proveedor). */
     Inventario registrarEntrada(Long idInsumo, Double cantidad);
 
     /** Salida manual de insumos (merma, uso fuera del flujo automatico de pedidos). */

@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
-/** Tabla 3 - Clase de Entidad: Cliente. */
+/** Clase de Entidad: Cliente. */
 @Entity
 @Table(name = "cliente")
 public class Cliente {

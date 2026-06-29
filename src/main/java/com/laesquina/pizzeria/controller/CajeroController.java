@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-/** Caso de uso "Cobrar / Registrar Venta" (3.2.c), a cargo del Cajero. */
+/** Controlador encargado de gestionar las operaciones del módulo de caja. */
 @Controller
 @RequestMapping("/cajero")
 public class CajeroController {

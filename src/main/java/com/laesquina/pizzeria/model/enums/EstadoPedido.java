@@ -1,9 +1,8 @@
 package com.laesquina.pizzeria.model.enums;
 
 /**
- * Tabla 3 (Pedido.estado) + RF-008: estado del pedido (pendiente, en preparacion,
- * listo, entregado). Se agrega CANCELADO como flujo alternativo documentado
- * en las especificaciones de caso de uso ("Cliente cancela antes de confirmar").
+ * Enumeración que representa las etapas del proceso de atención
+ * de un pedido, desde su registro hasta su entrega o cancelación.
  */
 public enum EstadoPedido {
     PENDIENTE,

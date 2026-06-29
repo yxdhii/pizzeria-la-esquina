@@ -7,8 +7,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * "Realizacion del negocio": Actualizar inventario, Controlar stock (RF-009,
- * RF-0010), a cargo del Encargado de Logistica.
+ * Controlador responsable de las funcionalidades del módulo de logística.
+ *
+ * Permite supervisar el estado del inventario y administrar los
+ * movimientos de entrada y salida de insumos para mantener el
+ * abastecimiento de la pizzería.
  */
 @Controller
 @RequestMapping("/logistica")

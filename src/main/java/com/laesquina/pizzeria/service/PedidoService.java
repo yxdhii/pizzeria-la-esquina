@@ -11,18 +11,18 @@ public interface PedidoService {
     List<Pedido> listarPorEstado(EstadoPedido estado);
     Pedido buscarPorId(Long id);
 
-    /** Caso de uso "Registrar Pedido": valida disponibilidad y calcula el total. */
+    /** Registra un nuevo pedido en el sistema.*/
     Pedido registrarPedido(PedidoRequestDTO dto);
 
-    /** Caso de uso "Preparar Pedido": pasa de PENDIENTE a EN_PREPARACION. */
+    /** Inicia el proceso de preparación de un pedido. */
     Pedido iniciarPreparacion(Long idPedido);
 
-    /** Caso de uso "Preparar Pedido": marca LISTO y notifica (paso 4-5 del flujo basico). */
+    /**  Actualiza el estado del pedido a listo para su entrega. */
     Pedido marcarListo(Long idPedido);
 
-    /** Caso de uso "Entregar Pedido": marca ENTREGADO. */
+    /** Marca un pedido como entregado. */
     Pedido marcarEntregado(Long idPedido);
 
-    /** Flujo alternativo "Cliente cancela antes de confirmar". */
+    /** Cancela un pedido registrado en el sistema. */
     Pedido cancelarPedido(Long idPedido);
 }

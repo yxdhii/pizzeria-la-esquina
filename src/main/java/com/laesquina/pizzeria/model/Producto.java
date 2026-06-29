@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 
-/** Tabla 3 - Clase de Entidad: Producto (Pizza/Bebida/Complemento). */
+
 @Entity
 @Table(name = "producto")
 public class Producto {

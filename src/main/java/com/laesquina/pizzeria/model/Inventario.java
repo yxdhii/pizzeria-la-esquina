@@ -3,12 +3,7 @@ package com.laesquina.pizzeria.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-/**
- * Tabla 3 - Clase de Entidad: Inventario.
- * Relacion 1 a 1 con Insumo: cada insumo tiene exactamente un registro de
- * inventario que indica su stock actual y minimo (RF-009: alertas de stock
- * minimo para insumos perecederos).
- */
+
 @Entity
 @Table(name = "inventario")
 public class Inventario {
@@ -73,7 +68,7 @@ public class Inventario {
         this.fechaActualizacion = fechaActualizacion;
     }
 
-    /** Util para la vista: resalta en la tabla los insumos que llegaron al minimo. */
+   
     @Transient
     public boolean isStockBajo() {
         return stockActual != null && stockMinimo != null && stockActual <= stockMinimo;

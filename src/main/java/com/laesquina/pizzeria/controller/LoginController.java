@@ -7,10 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * Spring Security ya protege las rutas (ver SecurityConfig); este
- * controlador solo se encarga de la vista de login y de mandar a cada
- * empleado a SU dashboard despues de autenticarse (defaultSuccessUrl
- * apunta a "/redirigir").
+ * Controlador responsable del inicio de sesión y la gestión del acceso
+ * al sistema. Además, redirige a los usuarios autenticados al módulo
+ * correspondiente según el rol asignado y muestra la página de acceso
+ * denegado cuando el usuario no cuenta con los permisos necesarios.
  */
 @Controller
 public class LoginController {

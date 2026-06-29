@@ -5,12 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
-/**
- * Entidad agregada (no estaba en la Tabla 3 original) porque la descripcion
- * de la empresa indica "capacidad aproximada para 8 mesas" y el RF-004 pide
- * "Gestion de asignacion de mesas y ocupacion". Sin esta entidad no se puede
- * implementar ese requerimiento funcional.
- */
+
 @Entity
 @Table(name = "mesa")
 public class Mesa {

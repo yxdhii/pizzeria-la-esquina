@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Caso de uso "Registrar Pedido" (seccion 3.2.a del documento):
- * "Ingresa items: producto, cantidad, notas. Selecciona mesa (si salon) o
- * datos de entrega (si delivery)". Este DTO agrupa exactamente esos datos.
+ * Objeto de transferencia de datos (DTO) utilizado para almacenar
+ * la información necesaria durante el registro de un pedido,
+ * incluyendo el cliente, el tipo de pedido, la mesa asignada,
+ * el empleado responsable y el detalle de los productos solicitados.
  */
 public class PedidoRequestDTO {
 
@@ -20,9 +21,8 @@ public class PedidoRequestDTO {
     @NotNull(message = "Debe indicar el tipo de pedido")
     private TipoPedido tipoPedido;
 
-    // Solo obligatorio si tipoPedido = SALON; se valida en el servicio
-    // porque la obligatoriedad depende de otro campo (no se puede expresar
-    // con una sola anotacion declarativa simple).
+    // Campo requerido únicamente para pedidos en salón.
+    // Su validación se realiza en la capa de servicios.
     private Long idMesa;
 
     //@NotNull(message = "Debe indicar el empleado que registra el pedido")

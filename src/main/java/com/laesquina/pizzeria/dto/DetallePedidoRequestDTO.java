@@ -4,10 +4,9 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
 /**
- * DTO para una linea del formulario "Registrar Pedido". Se usa un DTO en
- * lugar de la entidad DetallePedido directamente en el formulario porque el
- * formulario solo necesita idProducto/cantidad/notas; el precioUnitario y la
- * relacion con Pedido los completa el servicio, no el usuario.
+ * Objeto de transferencia de datos (DTO) que almacena la información
+ * necesaria para registrar cada producto incluido en un pedido,
+ * como el producto seleccionado, la cantidad y las observaciones.
  */
 public class DetallePedidoRequestDTO {
 

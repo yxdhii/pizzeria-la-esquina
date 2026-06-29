@@ -6,11 +6,11 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 /**
- * Sin este Converter, el formulario de Insumo (que tiene un <select> que
- * envia solo el idProveedor como texto) fallaria al hacer binding contra
- * Insumo.proveedor, que es de tipo Proveedor y no String/Long. Spring MVC
- * usa automaticamente cualquier Converter<String, X> registrado como Bean
- * para resolver este caso.
+ * Conversor personalizado que transforma el identificador de un proveedor
+ * recibido desde un formulario en una instancia de la entidad Proveedor.
+ * 
+ * Este componente facilita el enlace de datos (Data Binding) durante el
+ * procesamiento de formularios en Spring MVC.
  */
 @Component
 public class StringToProveedorConverter implements Converter<String, Proveedor> {

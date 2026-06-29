@@ -8,12 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Tabla 3 - Clase de Entidad: Pedido.
- * - cliente: ManyToOne (RF-001).
- * - mesa: ManyToOne, opcional -> solo aplica si tipoPedido = SALON (RF-004).
- * - empleado: quien registro el pedido (Mozo/Cajero segun el diagrama BPMN).
- * - detalles: un pedido tiene N productos con su cantidad -> ver DetallePedido.
- * - factura: relacion 1 a 1, se crea al cobrar (caso de uso "Cobrar/Registrar Venta").
+ * Entidad que representa los pedidos registrados en el sistema,
+ * incluyendo la información del cliente, la mesa, el empleado,
+ * el detalle de los productos solicitados y su estado.
  */
 @Entity
 @Table(name = "pedido")
@@ -49,14 +46,8 @@ public class Pedido {
     @JoinColumn(name = "id_empleado")
     private Empleado empleado;
 
-    // fetch = EAGER (no es el default de @OneToMany) porque con
-    // spring.jpa.open-in-view=false la sesion de Hibernate se cierra al
-    // terminar el controlador, antes de renderizar la vista. Si esta
-    // coleccion fuera LAZY, las plantillas de Cocina/Mozo que muestran
-    // pedido.detalles lanzarian LazyInitializationException al intentar
-    // leerla durante el render. Como un Pedido siempre se necesita junto
-    // con sus lineas (no tiene sentido mostrar uno sin el otro), EAGER es
-    // la opcion correcta aqui y no solo un parche.
+    // Se utiliza FetchType.EAGER para cargar automáticamente los
+    // detalles asociados al pedido cuando este es consultado.
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<DetallePedido> detalles = new ArrayList<>();
 
@@ -146,7 +137,10 @@ public class Pedido {
         this.factura = factura;
     }
 
-    /** Mantiene ambos lados de la relacion sincronizados (buena practica con JPA). */
+    /**
+    * Agrega un detalle al pedido y establece la relación
+    * bidireccional entre ambas entidades.
+    */
     public void agregarDetalle(DetallePedido detalle) {
         detalles.add(detalle);
         detalle.setPedido(this);

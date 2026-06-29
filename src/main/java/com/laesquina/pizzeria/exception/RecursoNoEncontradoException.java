@@ -1,6 +1,9 @@
 package com.laesquina.pizzeria.exception;
 
-/** Se lanza cuando se busca por id un Cliente/Producto/Pedido/etc. que no existe. */
+/**
+ * Excepción utilizada para indicar que el recurso solicitado
+ * no fue encontrado en el sistema.
+ */
 public class RecursoNoEncontradoException extends RuntimeException {
     public RecursoNoEncontradoException(String mensaje) {
         super(mensaje);

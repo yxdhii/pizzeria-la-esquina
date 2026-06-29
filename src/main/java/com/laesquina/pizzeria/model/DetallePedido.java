@@ -4,10 +4,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 
 /**
- * Entidad agregada al modelo (no aparece en la Tabla 3 del documento original)
- * porque un Pedido siempre contiene varios Productos, cada uno con su propia
- * cantidad y posible personalizacion (RF-002, RF-006: pedidos personalizados).
- * Es la tabla intermedia de la relacion N a N entre Pedido y Producto.
+ * Entidad que representa el detalle de un pedido,
+ * almacenando los productos solicitados, la cantidad,
+ * el precio unitario y las observaciones asociadas.
  */
 @Entity
 @Table(name = "detalle_pedido")
@@ -29,8 +28,7 @@ public class DetallePedido {
     @Column(nullable = false)
     private Integer cantidad;
 
-    // Se copia el precio del producto al momento del pedido para que, si el
-    // precio del producto cambia despues, no se altere el historico de ventas.
+    // Conserva el precio unitario registrado al momento del pedido.
     @Column(nullable = false)
     private Double precioUnitario;
 

@@ -8,7 +8,7 @@ public interface FacturaService {
     List<Factura> listarTodas();
     Factura buscarPorId(Long id);
 
-    /** Caso de uso "Cobrar / Registrar Venta". */
+    /** "Cobrar / Registrar Venta". */
     Factura generarFactura(Long idPedido, MetodoPago metodoPago);
 }
 

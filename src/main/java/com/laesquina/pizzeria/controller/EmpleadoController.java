@@ -12,6 +12,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+/** Controlador encargado de administrar la información de los empleados. */
+
 @Controller
 @RequestMapping("/admin/empleados")
 public class EmpleadoController {
@@ -48,8 +50,8 @@ public class EmpleadoController {
         return "admin/empleados/formulario";
     }
 
-    // La contraseña se re-encripta SOLO si el formulario trae una nueva
-    // (en edicion, el campo puede llegar vacio si no se quiere cambiar).
+    // Conserva la contraseña actual cuando el campo se envía vacío;
+    // en caso contrario, almacena la nueva contraseña cifrada.
     @PostMapping("/guardar")
     public String guardar(@Valid @ModelAttribute("empleado") Empleado empleado,
     BindingResult resultado,

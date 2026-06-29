@@ -9,13 +9,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 /**
- * Define quien puede entrar a que rutas. Se basa directamente en los actores
- * del caso de uso (Ilustracion 7): Mozo, Cajero, Cocinero, Encargado de
- * Logistica y Administrador. El Administrador tiene acceso a todo /admin/**
- * (gestion de catalogos: clientes, empleados, mesas, productos, proveedores,
- * insumos, reportes), mientras cada rol operativo solo entra a su propia
- * area, igual que en la pizzeria real un mozo no factura ni un cajero
- * administra el menu.
+ * Configuración de seguridad del sistema.
+ * Define las reglas de autenticación y autorización según los roles
+ * establecidos para cada usuario de la aplicación.
+ * 
+ * Cada rol tiene acceso únicamente a las rutas correspondientes a sus
+ * funciones dentro del sistema: administrador, cajero, mozo, cocina
+ * y logística.
  */
 @Configuration
 @EnableWebSecurity

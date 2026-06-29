@@ -8,11 +8,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 /**
- * Carga datos iniciales SOLO si las tablas estan vacias (por eso cada bloque
- * empieza con un "if count == 0"), para que sea seguro reiniciar la app
- * varias veces sin duplicar registros. Esto es indispensable para que el
- * profesor pueda levantar el proyecto y probarlo de inmediato, sin tener que
- * registrar manualmente un usuario antes de poder iniciar sesion.
+ * Componente encargado de inicializar datos base del sistema cuando las tablas
+ * principales se encuentran vacías. Esto permite contar con usuarios, mesas,
+ * clientes, productos, proveedores e insumos iniciales para la ejecución y
+ * validación funcional de la aplicación.
  */
 @Component
 public class DataInitializer implements CommandLineRunner {
@@ -77,7 +76,7 @@ public class DataInitializer implements CommandLineRunner {
 
     private void sembrarMesas() {
         if (mesaRepository.count() > 0) return;
-        // "capacidad aproximada para 8 mesas" (Descripcion de la empresa, seccion c).
+        // Capacidades iniciales de las mesas registradas para la atención en salón.
         int[] capacidades = {2, 2, 4, 4, 4, 6, 6, 8};
         for (int i = 0; i < capacidades.length; i++) {
             Mesa m = new Mesa();

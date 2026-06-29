@@ -1,6 +1,9 @@
 package com.laesquina.pizzeria.model.enums;
 
-/** Roles identificados en el documento (Trabajadores del negocio, seccion 2.1.2). */
+/**
+ * Enumeración que define los diferentes roles
+ * asignados a los empleados del sistema.
+ */
 public enum RolEmpleado {
     ADMINISTRADOR,
     CAJERO,
