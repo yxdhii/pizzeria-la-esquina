@@ -100,6 +100,7 @@ El proyecto fue desarrollado siguiendo el patrón de arquitectura **MVC (Model -
 <img src="https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=hibernate&logoColor=white"/>
 
 </div>
+
 ---
 
 # 🔐 Seguridad
@@ -115,6 +116,7 @@ El proyecto fue desarrollado siguiendo el patrón de arquitectura **MVC (Model -
 | 🚪 **Gestión de sesiones** | Administración segura de la autenticación de usuarios. |
 
 </div>
+
 ---
 
 # 📂 Estructura del proyecto
