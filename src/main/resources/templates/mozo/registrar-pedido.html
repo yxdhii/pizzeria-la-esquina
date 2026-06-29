@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar pedido | La Esquina</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/pedidos.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<main class="pedido-page">
+
+    <section class="pedido-hero">
+        <div>
+            <h1>Registrar pedido</h1>
+            <p>Completa la información para registrar un nuevo pedido.</p>
+        </div>
+
+        <img th:src="@{/img/img-11.png}" alt="Mozo registrando pedido">
+    </section>
+
+    <section class="pedido-card">
+
+        <form th:action="@{/mozo/pedidos/guardar}"
+              th:object="${pedidoRequest}"
+              method="post">
+
+            <div class="form-grid">
+
+                <div class="input-box">
+                    <label>
+                        <span class="field-icon red"><i class="bi bi-person"></i></span>
+                        Cliente
+                    </label>
+
+                    <select th:field="*{idCliente}" required>
+                        <option value="">-- Seleccione --</option>
+                        <option th:each="c : ${clientes}"
+                                th:value="${c.idCliente}"
+                                th:text="${c.nombreCompleto}">
+                        </option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <label>
+                        <span class="field-icon yellow"><i class="bi bi-bell"></i></span>
+                        Tipo de pedido
+                    </label>
+
+                    <select th:field="*{tipoPedido}"
+                            id="tipoPedido"
+                            required
+                            onchange="toggleMesa()">
+                        <option value="SALON">Salón</option>
+                        <option value="LLEVAR">Para llevar</option>
+                        <option value="DELIVERY">Delivery</option>
+                    </select>
+                </div>
+
+                <div class="input-box" id="campoMesa">
+                    <label>
+                        <span class="field-icon green"><i class="bi bi-table"></i></span>
+                        Mesa <small>(solo si es Salón)</small>
+                    </label>
+
+                    <select th:field="*{idMesa}">
+                        <option value="">-- Sin mesa --</option>
+                        <option th:each="m : ${mesas}"
+                                th:value="${m.idMesa}"
+                                th:text="'Mesa ' + ${m.numero} + ' (cap. ' + ${m.capacidad} + ')'">
+                        </option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="products-header">
+                <div>
+                    <span class="field-icon red"><i class="bi bi-bag"></i></span>
+                    <h2>Productos del pedido</h2>
+                </div>
+            </div>
+
+            <div class="details-wrapper">
+                <table class="table pedido-table" id="tablaDetalles">
+                    <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th style="width: 140px">Cantidad</th>
+                        <th>Notas / personalización</th>
+                        <th style="width: 80px"></th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="cuerpoDetalles"></tbody>
+                </table>
+            </div>
+
+            <button type="button" class="btn-add-product" onclick="agregarFila()">
+                <i class="bi bi-plus-lg"></i>
+                Agregar producto
+            </button>
+
+            <div class="pedido-actions">
+                <button type="submit" class="btn-save">
+                    <i class="bi bi-check-circle-fill"></i>
+                    Registrar pedido
+                </button>
+
+                <a th:href="@{/mozo/pedidos}" class="btn-cancel">
+                    <i class="bi bi-x-lg"></i>
+                    Cancelar
+                </a>
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script th:inline="javascript">
+    const productos = /*[[${productos}]]*/ [];
+    let contador = 0;
+
+    function agregarFila() {
+        const tbody = document.getElementById("cuerpoDetalles");
+        const fila = document.createElement("tr");
+
+        let opciones = '<option value="">-- Producto --</option>';
+
+        productos.forEach((p) => {
+            opciones += `<option value="${p.idProducto}">
+                ${p.nombreProducto} (S/ ${p.precio.toFixed(2)})
+            </option>`;
+        });
+
+        fila.innerHTML = `
+            <td>
+                <select name="detalles[${contador}].idProducto" class="form-select" required>
+                    ${opciones}
+                </select>
+            </td>
+
+            <td>
+                <input type="number"
+                       name="detalles[${contador}].cantidad"
+                       class="form-control"
+                       min="1"
+                       value="1"
+                       required>
+            </td>
+
+            <td>
+                <input type="text"
+                       name="detalles[${contador}].notas"
+                       class="form-control"
+                       placeholder="Ej: sin cebolla">
+            </td>
+
+            <td class="text-center">
+                <button type="button"
+                        class="btn-remove"
+                        onclick="this.closest('tr').remove()">
+                    <i class="bi bi-trash3"></i>
+                </button>
+            </td>
+        `;
+
+        tbody.appendChild(fila);
+        contador++;
+    }
+
+    function toggleMesa() {
+        const tipo = document.getElementById("tipoPedido").value;
+        document.getElementById("campoMesa").style.display =
+            tipo === "SALON" ? "" : "none";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        agregarFila();
+        toggleMesa();
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

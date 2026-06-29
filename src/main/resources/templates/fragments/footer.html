@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<footer th:fragment="footer" class="app-footer">
+
+    <div class="footer-container">
+
+        <!-- Logo -->
+        <div class="footer-brand">
+
+            <img th:src="@{/img/logoLE.png}" alt="Logo">
+
+            <div class="footer-text">
+
+                <h5>Pizzería La Esquina</h5>
+
+                <p>
+                    Sistema de gestión de pedidos, inventario y ventas
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Centro -->
+        <div class="footer-center">
+
+            <span>© 2026 Pizzería La Esquina</span>
+
+        </div>
+
+        <!-- Estado -->
+        <div class="footer-status">
+
+            <div class="status-item">
+
+                <span class="status-dot"></span>
+
+                Sistema operativo
+
+            </div>
+
+            <div class="version">
+
+                v1.0
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+
+<nav th:fragment="navbar" class="navbar navbar-expand-lg app-navbar">
+    <div class="container-fluid navbar-content">
+
+        <!-- Logo -->
+        <a class="navbar-brand app-brand" th:href="@{/admin/dashboard}">
+            <img th:src="@{/img/logoLE.png}" alt="Pizzería La Esquina">
+        </a>
+
+        <!-- Botón responsive -->
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+
+            <ul class="navbar-nav me-auto app-menu">
+
+                <!-- Menu Administrador -->
+                <li class="nav-item" sec:authorize="hasRole('ADMINISTRADOR')">
+                    <a class="nav-link" th:href="@{/admin/dashboard}" th:classappend="${activePage == 'dashboard'} ? ' active'">
+                        <i class="bi bi-house-door"></i>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasRole('ADMINISTRADOR')">
+                    <a class="nav-link" th:href="@{/admin/clientes}"  th:classappend="${activePage == 'clientes'} ? ' active'">
+                        <i class="bi bi-people"></i>
+                        <span>Clientes</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasRole('ADMINISTRADOR')">
+                    <a class="nav-link" th:href="@{/admin/empleados}" th:classappend="${activePage == 'empleados'} ? ' active'">
+                        <i class="bi bi-person-badge"></i>
+                        <span>Empleados</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasRole('ADMINISTRADOR')">
+                    <a class="nav-link" th:href="@{/admin/mesas}" th:classappend="${activePage == 'mesas'} ? ' active'" >
+                        <i class="bi bi-grid"></i>
+                        <span>Mesas</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasRole('ADMINISTRADOR')">
+                    <a class="nav-link" th:href="@{/admin/productos}" th:classappend="${activePage == 'productos'} ? ' active'">
+                        <i class="bi bi-box-seam"></i>
+                        <span>Productos</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasRole('ADMINISTRADOR')">
+                    <a class="nav-link" th:href="@{/admin/proveedores}" th:classappend="${activePage == 'proveedores'} ? ' active'">
+                        <i class="bi bi-truck"></i>
+                        <span>Proveedores</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasRole('ADMINISTRADOR')">
+                    <a class="nav-link" th:href="@{/admin/insumos}" th:classappend="${activePage == 'insumos'} ? ' active'">
+                        <i class="bi bi-basket"></i>
+                        <span>Insumos</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasRole('ADMINISTRADOR')">
+                    <a class="nav-link" th:href="@{/admin/inventario}" th:classappend="${activePage == 'inventario'} ? ' active'">
+                        <i class="bi bi-clipboard-data"></i>
+                        <span>Inventario</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasRole('ADMINISTRADOR')">
+                    <a class="nav-link" th:href="@{/admin/reportes/ventas}" th:classappend="${activePage == 'reportes'} ? ' active'">
+                        <i class="bi bi-bar-chart"></i>
+                        <span>Reportes</span>
+                    </a>
+                </li>
+
+                <!-- Menu Mozo -->
+                <li class="nav-item" sec:authorize="hasRole('MOZO')">
+                    <a class="nav-link" th:href="@{/mozo/dashboard}"  th:classappend="${activePage == 'dashboard'} ? ' active'">
+                        <i class="bi bi-house-door"></i>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasRole('MOZO')">
+                    <a class="nav-link" th:href="@{/mozo/pedidos}"  th:classappend="${activePage == 'pedidos'} ? ' active'">
+                        <i class="bi bi-receipt"></i>
+                        <span>Pedidos</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasRole('MOZO')">
+                    <a class="nav-link" th:href="@{/mozo/pedidos/nuevo}" th:classappend="${activePage == 'nuevoPedido'} ? ' active'">
+                        <i class="bi bi-plus-circle"></i>
+                        <span>Nuevo pedido</span>
+                    </a>
+                </li>
+
+                <!-- Menu Cocinero -->
+                <li class="nav-item" sec:authorize="hasRole('COCINERO')">
+                    <a class="nav-link" th:href="@{/cocina/dashboard}" th:classappend="${activePage == 'dashboard'} ? ' active'">
+                        <i class="bi bi-house-door"></i>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasRole('COCINERO')">
+                    <a class="nav-link" th:href="@{/cocina/pedidos}" th:classappend="${activePage == 'cocina'} ? ' active'">
+                        <i class="bi bi-fire"></i>
+                        <span>Cola de cocina</span>
+                    </a>
+                </li>
+
+                <!-- Menu Cajero -->
+                <li class="nav-item" sec:authorize="hasRole('CAJERO')">
+                    <a class="nav-link" th:href="@{/cajero/dashboard}" th:classappend="${activePage == 'dashboard'} ? ' active'">
+                        <i class="bi bi-house-door"></i>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasRole('CAJERO')">
+                    <a class="nav-link" th:href="@{/cajero/pedidos}" th:classappend="${activePage == 'porCobrar'} ? ' active'">
+                        <i class="bi bi-cash-coin"></i>
+                        <span>Por cobrar</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasRole('CAJERO')">
+                    <a class="nav-link" th:href="@{/cajero/facturas}" th:classappend="${activePage == 'comprobantes'} ? ' active'">
+                        <i class="bi bi-file-earmark-text"></i>
+                        <span>Comprobantes</span>
+                    </a>
+                </li>
+
+                <!-- Menu Logistica -->
+                <li class="nav-item" sec:authorize="hasRole('LOGISTICA')">
+                    <a class="nav-link" th:href="@{/logistica/dashboard}" th:classappend="${activePage == 'dashboard'} ? ' active'">
+                        <i class="bi bi-house-door"></i>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasRole('LOGISTICA')">
+                    <a class="nav-link" th:href="@{/logistica/inventario}" th:classappend="${activePage == 'inventario'} ? ' active'">
+                        <i class="bi bi-clipboard-data"></i>
+                        <span>Inventario</span>
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- Usuario autenticado -->
+            <div class="user-info" sec:authorize="isAuthenticated()">
+                <span class="user-label">Usuario:</span>
+                <span class="user-name" sec:authentication="name">admin</span>
+            </div>
+
+            <!-- Botón cerrar sesión -->
+            <form th:action="@{/logout}" method="post" class="ms-3">
+                <button class="btn btn-logout" type="submit">
+                    Cerrar sesión
+                    <i class="bi bi-box-arrow-right"></i>
+                </button>
+            </form>
+
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

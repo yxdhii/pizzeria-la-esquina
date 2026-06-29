@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Mozo | La Esquina</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/mozo.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<main class="mozo-page">
+
+    <section class="mozo-hero">
+        <div>
+            <h1>Panel del Mozo</h1>
+            <p>Gestiona los pedidos y el estado de las mesas en tiempo real.</p>
+
+            <div class="mozo-actions">
+                <a th:href="@{/mozo/pedidos/nuevo}" class="btn-register">
+                    <i class="bi bi-plus-lg"></i>
+                    Registrar pedido
+                </a>
+
+                <a th:href="@{/mozo/pedidos}" class="btn-view">
+                    <i class="bi bi-list-check"></i>
+                    Ver todos los pedidos
+                </a>
+            </div>
+        </div>
+
+        <img th:src="@{/img/img-11.png}" alt="Mozo">
+    </section>
+
+    <section class="stats-row">
+        <div class="stat-box">
+            <div class="stat-icon pending">
+                <i class="bi bi-bag"></i>
+            </div>
+
+            <div>
+                <span>Pedidos pendientes</span>
+                <h2 th:text="${pedidosPendientes}">0</h2>
+            </div>
+        </div>
+
+        <div class="stat-box">
+            <div class="stat-icon ready">
+                <i class="bi bi-check-circle"></i>
+            </div>
+
+            <div>
+                <span>Pedidos listos para entregar</span>
+                <h2 th:text="${pedidosListos}">0</h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="tables-section">
+        <div class="section-title">
+            <i class="bi bi-shop-window"></i>
+            <h3>Estado de mesas</h3>
+        </div>
+
+        <div class="tables-grid">
+            <div class="table-card"
+                 th:each="m : ${mesas}"
+                 th:classappend="${m.estado.name() == 'DISPONIBLE'} ? ' available' : ' occupied'">
+
+                <div class="table-icon">
+                    <i class="bi bi-table"></i>
+                </div>
+
+                <div>
+                    <span>Mesa</span>
+                    <h4 th:text="${m.numero}">1</h4>
+                </div>
+
+                <p th:text="${m.estado}">DISPONIBLE</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

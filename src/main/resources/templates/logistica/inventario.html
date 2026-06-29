@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventario | La Esquina</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/logistica.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<main class="inventory-page">
+
+    <section class="inventory-hero">
+        <div class="inventory-title">
+            <span class="inventory-icon">
+                <i class="bi bi-clipboard-check"></i>
+            </span>
+
+            <div>
+                <h1>Inventario de insumos</h1>
+                <p>Controla el stock de insumos, registra entradas y salidas para mantener tu inventario actualizado.</p>
+            </div>
+        </div>
+
+        <img th:src="@{/img/img-16.png}" alt="Inventario logística">
+    </section>
+
+    <section class="inventory-card">
+
+        <table class="table inventory-table align-middle">
+            <thead>
+            <tr>
+                <th>Insumo</th>
+                <th>Stock actual</th>
+                <th>Stock mínimo</th>
+                <th>Estado</th>
+                <th>Entrada</th>
+                <th>Salida</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="inv : ${inventarios}" th:classappend="${inv.stockBajo} ? ' stock-low' : ''">
+                <td>
+                    <strong th:text="${inv.insumo.nombreInsumo} + ' (' + ${inv.insumo.unidadMedida} + ')'">
+                        Insumo
+                    </strong>
+                </td>
+
+                <td th:text="${inv.stockActual}">0</td>
+                <td th:text="${inv.stockMinimo}">0</td>
+
+                <td>
+                    <span class="stock-badge"
+                          th:classappend="${inv.stockBajo} ? ' badge-low' : ' badge-ok'"
+                          th:text="${inv.stockBajo} ? 'Stock bajo' : 'OK'">
+                        OK
+                    </span>
+                </td>
+
+                <td>
+                    <form th:action="@{/logistica/inventario/{id}/entrada(id=${inv.insumo.idInsumo})}"
+                          method="post"
+                          class="stock-form">
+                        <input type="number" step="0.1" name="cantidad" required>
+                        <button class="btn-entry" type="submit">
+                            <i class="bi bi-plus-lg"></i>
+                            Entrada
+                        </button>
+                    </form>
+                </td>
+
+                <td>
+                    <form th:action="@{/logistica/inventario/{id}/salida(id=${inv.insumo.idInsumo})}"
+                          method="post"
+                          class="stock-form">
+                        <input type="number" step="0.1" name="cantidad" required>
+                        <button class="btn-exit" type="submit">
+                            <i class="bi bi-dash-lg"></i>
+                            Salida
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </section>
+
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

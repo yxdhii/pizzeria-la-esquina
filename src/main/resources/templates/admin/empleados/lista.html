@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Empleados - La Esquina</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/empleados.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<main class="empleados-page">
+
+    <section class="empleados-hero">
+        <div>
+            <span class="module-label">Módulo administrativo</span>
+            <h1>Empleados</h1>
+            <p>Administra la información, roles, turnos y usuarios del personal de Pizzería La Esquina.</p>
+        </div>
+
+        <img th:src="@{/img/img-1.png}" alt="Ilustración pizzería">
+
+        <a th:href="@{/admin/empleados/nuevo}" class="btn-new">
+            <i class="bi bi-plus-circle-fill"></i>
+            Nuevo empleado
+        </a>
+    </section>
+
+    <section class="empleados-card">
+
+        <div class="search-box">
+            <i class="bi bi-search"></i>
+            <input type="text" placeholder="Buscar empleado...">
+        </div>
+
+        <table class="table empleados-table">
+            <thead>
+            <tr>
+                <th>Empleado</th>
+                <th>Rol</th>
+                <th>Turno</th>
+                <th>Usuario</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="e : ${empleados}">
+                <td>
+                    <div class="employee-cell">
+                        <div class="employee-avatar"
+                             th:text="${#strings.substring(e.nombreCompleto,0,1)}">E</div>
+
+                        <strong th:text="${e.nombreCompleto}">Carlos Saavedra</strong>
+                    </div>
+                </td>
+
+                <td>
+                    <span th:classappend="${e.rol.name() == 'ADMINISTRADOR'} ? ' role-admin' :
+                                         (${e.rol.name() == 'CAJERO'} ? ' role-cajero' :
+                                         (${e.rol.name() == 'MOZO'} ? ' role-mozo' :
+                                         (${e.rol.name() == 'COCINERO'} ? ' role-cocinero' : ' role-logistica')))"
+                          class="role-badge"
+                          th:text="${e.rol}">
+                        ADMINISTRADOR
+                    </span>
+                </td>
+
+                <td>
+                    <span th:classappend="${#strings.toUpperCase(e.turno) == 'DIURNO'} ? ' shift-day' :
+                                         (${#strings.toUpperCase(e.turno) == 'TARDE'} ? ' shift-afternoon' : ' shift-morning')"
+                          class="shift-badge">
+                        <i th:classappend="${#strings.toUpperCase(e.turno) == 'DIURNO'} ? ' bi-sun-fill' :
+                                           (${#strings.toUpperCase(e.turno) == 'TARDE'} ? ' bi-brightness-high-fill' : ' bi-moon-fill')"
+                           class="bi"></i>
+                        <span th:text="${e.turno}">Turno</span>
+                    </span>
+                </td>
+
+                <td th:text="${e.usuario}">admin</td>
+
+                <td class="text-center">
+                    <a th:href="@{/admin/empleados/{id}/editar(id=${e.idEmpleado})}"
+                       class="btn-action btn-edit">
+                        <i class="bi bi-pencil-square"></i>
+                        Editar
+                    </a>
+
+                    <a th:href="@{/admin/empleados/{id}/eliminar(id=${e.idEmpleado})}"
+                       class="btn-action btn-delete btn-confirm-delete">
+                        <i class="bi bi-trash3"></i>
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </section>
+
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/alerts :: alerts}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

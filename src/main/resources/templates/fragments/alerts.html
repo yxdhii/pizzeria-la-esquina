@@ -1,0 +1,95 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <div th:fragment="alerts">
+      <!-- SweetAlert -->
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+      <!-- Mensajes ocultos -->
+      <div
+        id="successMessage"
+        th:if="${success}"
+        th:data-message="${success}"
+      ></div>
+
+      <div id="errorMessage" th:if="${error}" th:data-message="${error}"></div>
+
+      <script>
+        // SUCCESS
+        const success = document.getElementById("successMessage");
+
+        if (success) {
+          Swal.fire({
+            icon: "success",
+            title: "Correcto",
+            text: success.dataset.message,
+            confirmButtonColor: "#c0392b",
+          });
+        }
+
+        // ERROR
+        const error = document.getElementById("errorMessage");
+
+        if (error) {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: error.dataset.message,
+            confirmButtonColor: "#c0392b",
+          });
+        }
+
+        // CONFIRMAR ELIMINACIÓN
+        document.querySelectorAll(".btn-confirm-delete").forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const url = this.href;
+
+            Swal.fire({
+              title: "¿Eliminar registro?",
+              text: "Esta acción no se puede deshacer.",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonText: "Sí, eliminar",
+              cancelButtonText: "Cancelar",
+              confirmButtonColor: "#c0392b",
+              cancelButtonColor: "#6c757d",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.href = url;
+              }
+            });
+          });
+        });
+
+        document.querySelectorAll(".btn-confirm-save").forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            const form = this.closest("form");
+
+            if (!form.checkValidity()) {
+              return;
+            }
+
+            e.preventDefault();
+
+            Swal.fire({
+              title: "¿Guardar registro?",
+              text: "Se registrará la información ingresada.",
+              icon: "question",
+              showCancelButton: true,
+              confirmButtonText: "Sí, guardar",
+              cancelButtonText: "Cancelar",
+              confirmButtonColor: "#16a34a",
+              cancelButtonColor: "#6c757d",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                form.submit();
+              }
+            });
+          });
+        });
+      </script>
+    </div>
+  </body>
+</html>

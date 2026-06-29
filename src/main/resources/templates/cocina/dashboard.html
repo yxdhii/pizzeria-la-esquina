@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Cocina | La Esquina</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/cocina.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<main class="cocina-page">
+
+    <section class="cocina-hero">
+
+        <div class="hero-info">
+            <div class="hero-title">
+                <span class="hero-icon">
+                    <i class="bi bi-egg-fried"></i>
+                </span>
+
+                <div>
+                    <h1>Panel de Cocina</h1>
+                    <p>Gestiona los pedidos que están pendientes y en preparación.</p>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+
+                <div class="stat-card pending">
+                    <div class="stat-icon">
+                        <i class="bi bi-clipboard-check"></i>
+                    </div>
+
+                    <div>
+                        <span>Pendientes</span>
+                        <h2 th:text="${pendientes}">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card cooking">
+                    <div class="stat-icon">
+                        <i class="bi bi-fire"></i>
+                    </div>
+
+                    <div>
+                        <span>En preparación</span>
+                        <h2 th:text="${enPreparacion}">0</h2>
+                    </div>
+                </div>
+
+            </div>
+
+            <a th:href="@{/cocina/pedidos}" class="btn-kitchen">
+                <i class="bi bi-card-checklist"></i>
+                Ver cola de cocina
+                <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="hero-image">
+            <img th:src="@{/img/img-12.png}" alt="Cocinero">
+        </div>
+
+    </section>
+
+    <section class="info-strip">
+
+        <div class="info-item">
+            <div class="info-icon">
+                <i class="bi bi-clock"></i>
+            </div>
+
+            <div>
+                <h3>Pedidos en tiempo real</h3>
+                <p>Actualización automática de nuevos pedidos.</p>
+            </div>
+        </div>
+
+        <div class="info-item">
+            <div class="info-icon">
+                <i class="bi bi-bell"></i>
+            </div>
+
+            <div>
+                <h3>Notificaciones</h3>
+                <p>Recibe alertas de pedidos pendientes.</p>
+            </div>
+        </div>
+
+        <div class="info-item">
+            <div class="info-icon">
+                <i class="bi bi-egg-fried"></i>
+            </div>
+
+            <div>
+                <h3>Organización eficiente</h3>
+                <p>Prioriza y gestiona los pedidos de manera ordenada.</p>
+            </div>
+        </div>
+
+        <div class="info-item">
+            <div class="info-icon">
+                <i class="bi bi-bar-chart"></i>
+            </div>
+
+            <div>
+                <h3>Mejor control</h3>
+                <p>Visualiza el flujo de trabajo en la cocina.</p>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
