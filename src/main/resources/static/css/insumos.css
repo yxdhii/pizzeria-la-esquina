@@ -1,0 +1,454 @@
+body {
+    background: linear-gradient(180deg, #fffaf7 0%, #f6f7fb 100%);
+    color: #111827;
+}
+
+.insumos-page {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 46px 28px 60px;
+    flex: 1;
+}
+
+.insumos-hero {
+    background: #fff;
+    border: 1px solid #eef0f4;
+    border-radius: 28px;
+    padding: 36px 40px;
+    margin-bottom: 28px;
+    min-height: 210px;
+    box-shadow: 0 18px 45px rgba(20, 20, 20, .06);
+    display: grid;
+    grid-template-columns: 1fr 360px auto;
+    align-items: center;
+    gap: 32px;
+}
+
+.module-label {
+    color: #c0392b;
+    font-size: 13px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+}
+
+.insumos-hero h1 {
+    font-size: 42px;
+    font-weight: 900;
+    margin: 16px 0 12px;
+    color: #111827;
+}
+
+.insumos-hero p {
+    max-width: 540px;
+    color: #6b7280;
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.insumos-hero img {
+    width: 100%;
+    max-width: 350px;
+    object-fit: contain;
+}
+
+.btn-new {
+    background: linear-gradient(135deg, #138a43, #16a34a);
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 24px;
+    border-radius: 15px;
+    font-weight: 900;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    box-shadow: 0 12px 25px rgba(22, 163, 74, .22);
+    transition: .25s ease;
+}
+
+.btn-new:hover {
+    color: #fff;
+    background: linear-gradient(135deg, #0f6f36, #15803d);
+    transform: translateY(-2px);
+}
+
+.insumos-card {
+    background: #fff;
+    border: 1px solid #eef0f4;
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow: 0 18px 45px rgba(20, 20, 20, .06);
+    overflow-x: auto;
+}
+
+.insumos-table {
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 980px;
+}
+
+.insumos-table thead th {
+    background: #111827;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 18px;
+    border: none;
+}
+
+.insumos-table thead th:first-child {
+    border-radius: 14px 0 0 0;
+}
+
+.insumos-table thead th:last-child {
+    border-radius: 0 14px 0 0;
+}
+
+.insumos-table tbody td {
+    padding: 20px 18px;
+    vertical-align: middle;
+    border-bottom: 1px solid #eef0f4;
+}
+
+.insumo-cell {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.insumo-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    background: #ffe8e8;
+    color: #c0392b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.unit-badge {
+    background: #fff4ce;
+    color: #d98a00;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: 12px;
+}
+
+.price-badge {
+    background: #e8f8ee;
+    color: #0f9f5f;
+    padding: 9px 15px;
+    border-radius: 999px;
+    font-weight: 900;
+}
+
+.provider-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #374151;
+    font-weight: 700;
+}
+
+.provider-chip i {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #fff4ec;
+    color: #c0392b;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-action {
+    text-decoration: none;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 900;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-delete {
+    background: #ffe8e8;
+    color: #d62828;
+    border: 1px solid #fecaca;
+}
+
+.btn-delete:hover {
+    background: #d62828;
+    color: #fff;
+}
+
+.inventory-note {
+    margin-top: 22px;
+    background: #fff4ec;
+    border: 1px solid #ffd9c8;
+    color: #5b6472;
+    border-radius: 16px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+}
+
+.inventory-note i {
+    color: #c0392b;
+}
+
+.inventory-note a {
+    color: #2563eb;
+    font-weight: 800;
+}
+
+@media (max-width: 1100px) {
+    .insumos-hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .insumos-hero p {
+        margin: 0 auto;
+    }
+
+    .insumos-hero img {
+        margin: 0 auto;
+    }
+
+    .btn-new {
+        justify-self: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .insumos-page {
+        padding: 28px 18px 44px;
+    }
+
+    .insumos-hero,
+    .insumos-card {
+        padding: 24px;
+    }
+
+    .insumos-hero h1 {
+        font-size: 34px;
+    }
+}
+
+/*insumos formulario*/
+
+/* ==============================
+   FORMULARIO INSUMOS
+================================= */
+
+.insumo-form-page {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 46px 28px 60px;
+    flex: 1;
+}
+
+.insumo-form-card {
+    background: #fff;
+    border: 1px solid #eef0f4;
+    border-radius: 30px;
+    padding: 44px;
+    box-shadow: 0 18px 45px rgba(20, 20, 20, .06);
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 54px;
+    align-items: center;
+}
+
+.insumo-form-left h1 {
+    font-size: 42px;
+    font-weight: 900;
+    margin: 16px 0 12px;
+    color: #111827;
+}
+
+.form-description {
+    color: #6b7280;
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.input-box {
+    margin-bottom: 20px;
+}
+
+.input-box label {
+    display: block;
+    color: #374151;
+    font-size: 15px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.input-icon {
+    height: 56px;
+    border: 1px solid #dfe3ea;
+    border-radius: 13px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    transition: .2s ease;
+}
+
+.input-icon i {
+    color: #c0392b;
+    background: #ffe8e8;
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 13px;
+    font-size: 17px;
+}
+
+.input-icon input,
+.input-icon select {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #374151;
+    font-size: 15px;
+}
+
+.input-icon:focus-within {
+    border-color: #c0392b;
+    box-shadow: 0 0 0 4px rgba(192, 57, 43, .10);
+}
+
+.inventory-section {
+    margin-top: 14px;
+    padding-top: 24px;
+    border-top: 1px solid #eef0f4;
+}
+
+.inventory-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #111827;
+    font-weight: 900;
+    margin-bottom: 18px;
+}
+
+.inventory-title i {
+    color: #c0392b;
+}
+
+.inventory-title small {
+    color: #6b7280;
+    font-weight: 600;
+}
+
+.form-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 14px;
+}
+
+.btn-save {
+    height: 56px;
+    border: none;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #138a43, #16a34a);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: .25s ease;
+}
+
+.btn-save:hover {
+    background: linear-gradient(135deg, #0f6f36, #15803d);
+    transform: translateY(-2px);
+}
+
+.btn-cancel {
+    height: 56px;
+    border-radius: 13px;
+    background: #fff;
+    color: #374151;
+    border: 1px solid #9ca3af;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: .25s ease;
+}
+
+.btn-cancel:hover {
+    background: #f3f4f6;
+    color: #111827;
+    transform: translateY(-2px);
+}
+
+.insumo-form-right img {
+    width: 100%;
+    max-width: 520px;
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 1050px) {
+    .insumo-form-card {
+        grid-template-columns: 1fr;
+    }
+
+    .insumo-form-right {
+        order: -1;
+    }
+}
+
+@media (max-width: 640px) {
+    .insumo-form-page {
+        padding: 28px 18px 44px;
+    }
+
+    .insumo-form-card {
+        padding: 28px 22px;
+    }
+
+    .form-grid,
+    .form-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .insumo-form-left h1 {
+        font-size: 34px;
+    }
+}
