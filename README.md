@@ -245,18 +245,23 @@ Los usuarios iniciales son creados automáticamente mediante la clase **DataInit
 
 ---
 
-# 👩🏻‍💻 Desarrollado por
+## 👩🏻‍💻 Desarrollado por
 
-<div align="center">
+### **Yadhira Patricia Saavedra Guadalupe**
 
-## Yadhira Patricia Saavedra Guadalupe
+Estudiante de **Ingeniería de Sistemas**  
+Universidad Tecnológica del Perú (UTP)
 
-**Ingeniería de Sistemas**
+<br>
 
-Universidad Tecnológica del Perú
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/itsyxdhi/)
+[![Portafolio](https://img.shields.io/badge/Portafolio-FF4D8D?style=for-the-badge&logo=vercel&logoColor=white)](https://yadhira-portafolio.vercel.app)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/yxdhii)
 
-2026
+<br>
 
-⭐ Si este proyecto te resulta útil o interesante, ¡no olvides dejar una estrella al repositorio!
+⭐ **Si este proyecto te resultó útil, considera darle una estrella al repositorio.**
+
+© 2026 · Pizzería La Esquina
 
 </div>
