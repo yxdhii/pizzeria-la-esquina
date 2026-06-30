@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * Controlador responsable de las funcionalidades del módulo de logística.
@@ -39,14 +40,30 @@ public class LogisticaController {
     }
 
     @PostMapping("/inventario/{idInsumo}/entrada")
-    public String registrarEntrada(@PathVariable Long idInsumo, @RequestParam Double cantidad) {
+    public String registrarEntrada(@PathVariable Long idInsumo,
+            @RequestParam Double cantidad,
+            RedirectAttributes redirectAttributes) {
+
         inventarioService.registrarEntrada(idInsumo, cantidad);
+
+        redirectAttributes.addFlashAttribute(
+                "success",
+                "Entrada registrada correctamente.");
+
         return "redirect:/logistica/inventario";
     }
 
     @PostMapping("/inventario/{idInsumo}/salida")
-    public String registrarSalida(@PathVariable Long idInsumo, @RequestParam Double cantidad) {
+    public String registrarSalida(@PathVariable Long idInsumo,
+            @RequestParam Double cantidad,
+            RedirectAttributes redirectAttributes) {
+
         inventarioService.registrarSalida(idInsumo, cantidad);
+
+        redirectAttributes.addFlashAttribute(
+                "success",
+                "Salida registrada correctamente.");
+
         return "redirect:/logistica/inventario";
     }
 }
