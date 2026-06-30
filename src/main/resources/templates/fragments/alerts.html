@@ -89,6 +89,56 @@
             });
           });
         });
+
+        document.querySelectorAll(".inventory-entry-form").forEach((form) => {
+          form.addEventListener("submit", function (e) {
+            if (!form.checkValidity()) {
+              return;
+            }
+
+            e.preventDefault();
+
+            Swal.fire({
+              title: "¿Registrar entrada?",
+              text: "Se aumentará el stock del insumo.",
+              icon: "question",
+              showCancelButton: true,
+              confirmButtonText: "Sí, registrar",
+              cancelButtonText: "Cancelar",
+              confirmButtonColor: "#16a34a",
+              cancelButtonColor: "#6c757d",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                form.submit();
+              }
+            });
+          });
+        });
+
+        document.querySelectorAll(".inventory-exit-form").forEach((form) => {
+          form.addEventListener("submit", function (e) {
+            if (!form.checkValidity()) {
+              return;
+            }
+
+            e.preventDefault();
+
+            Swal.fire({
+              title: "¿Registrar salida?",
+              text: "Se descontará el stock del insumo.",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonText: "Sí, registrar",
+              cancelButtonText: "Cancelar",
+              confirmButtonColor: "#c0392b",
+              cancelButtonColor: "#6c757d",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                form.submit();
+              }
+            });
+          });
+        });
       </script>
     </div>
   </body>

@@ -75,7 +75,7 @@
                 <td>
                     <form th:action="@{/admin/inventario/{id}/entrada(id=${inv.insumo.idInsumo})}"
                           method="post"
-                          class="movement-form">
+                          class="movement-form inventory-entry-form ">
 
                         <input type="number"
                                step="0.1"
@@ -92,7 +92,7 @@
                 <td>
                     <form th:action="@{/admin/inventario/{id}/salida(id=${inv.insumo.idInsumo})}"
                           method="post"
-                          class="movement-form">
+                          class="movement-form inventory-exit-form">
 
                         <input type="number"
                                step="0.1"
@@ -115,6 +115,7 @@
 </main>
 
 <div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/alerts :: alerts}"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
