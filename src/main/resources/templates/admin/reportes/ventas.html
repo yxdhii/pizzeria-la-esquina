@@ -40,6 +40,11 @@
                     Filtrar
                 </button>
 
+                <a th:href="@{/admin/reportes/ventas/pdf(desde=${desde}, hasta=${hasta})}"
+                class="btn-inventory">
+                <i class="bi bi-file-earmark-pdf"></i>
+                Exportar PDF </a>
+
                 <a th:href="@{/admin/reportes/inventario}" class="btn-inventory">
                     <i class="bi bi-eye"></i>
                     Ver reporte de inventario
