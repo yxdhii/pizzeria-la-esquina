@@ -109,7 +109,7 @@
             </button>
 
             <div class="pedido-actions">
-                <button type="submit" class="btn-save">
+                <button type="submit" class="btn-save btn-confirm-save">
                     <i class="bi bi-check-circle-fill"></i>
                     Registrar pedido
                 </button>
@@ -127,6 +127,7 @@
 </main>
 
 <div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/alerts :: alerts}"></div>
 
 <script th:inline="javascript">
     const productos = /*[[${productos}]]*/ [];

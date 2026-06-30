@@ -139,6 +139,29 @@
             });
           });
         });
+
+        document
+          .querySelectorAll(".confirm-cancel-order-form")
+          .forEach((form) => {
+            form.addEventListener("submit", function (e) {
+              e.preventDefault();
+
+              Swal.fire({
+                title: "¿Cancelar pedido?",
+                text: "El pedido pasará a estado cancelado.",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Sí, cancelar",
+                cancelButtonText: "Volver",
+                confirmButtonColor: "#c0392b",
+                cancelButtonColor: "#6c757d",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  form.submit();
+                }
+              });
+            });
+          });
       </script>
     </div>
   </body>

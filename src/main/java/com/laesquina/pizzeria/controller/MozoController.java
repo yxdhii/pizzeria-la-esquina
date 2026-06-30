@@ -44,9 +44,9 @@ public class MozoController {
     }
 
     /**
-    * Obtiene la información del empleado autenticado para asociar las
-    * operaciones realizadas con el usuario que inició sesión.
-    */
+     * Obtiene la información del empleado autenticado para asociar las
+     * operaciones realizadas con el usuario que inició sesión.
+     */
     private Empleado empleadoActual(Authentication authentication) {
         return empleadoRepository.findByUsuario(authentication.getName())
                 .orElseThrow(() -> new IllegalStateException("Empleado no encontrado para el usuario logueado"));
@@ -112,8 +112,15 @@ public class MozoController {
     }
 
     @PostMapping("/pedidos/{id}/cancelar")
-    public String cancelarPedido(@PathVariable Long id) {
+    public String cancelarPedido(@PathVariable Long id,
+            RedirectAttributes redirectAttributes) {
+
         pedidoService.cancelarPedido(id);
+
+        redirectAttributes.addFlashAttribute(
+                "success",
+                "Pedido cancelado correctamente.");
+
         return "redirect:/mozo/pedidos";
     }
 }
