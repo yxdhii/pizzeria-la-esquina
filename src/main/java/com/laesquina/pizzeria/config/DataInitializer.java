@@ -56,7 +56,7 @@ public class DataInitializer implements CommandLineRunner {
     private void sembrarEmpleados() {
         if (empleadoRepository.count() > 0) return;
 
-        crearEmpleado("Carlos", "Saavedra", RolEmpleado.ADMINISTRADOR, "Diurno", "admin", "admin123");
+        crearEmpleado("Yadhira", "Saavedra", RolEmpleado.ADMINISTRADOR, "Diurno", "admin", "admin123");
         crearEmpleado("Lucia", "Ramos", RolEmpleado.CAJERO, "Tarde", "cajero1", "cajero123");
         crearEmpleado("Jose", "Quispe", RolEmpleado.MOZO, "Tarde", "mozo1", "mozo123");
         crearEmpleado("Maria", "Torres", RolEmpleado.COCINERO, "Tarde", "cocinero1", "cocina123");
